@@ -398,8 +398,7 @@ section { position: relative; padding: 130px max(24px, calc((100vw - var(--max))
 .footer nav a:hover { color: var(--text); }
 .legal { width: 100%; margin: 0; font-size: 13px; color: #6f6789; }
 
-/* Sin animaciones si el sistema lo pide */
+/* Con los efectos de animacion de Windows apagados: el cristal no gira sin parar (lo demas se anima igual) */
 @media (prefers-reduced-motion: reduce) {
-  .crystal, .scroll-hint span::after { animation: none; }
-  .reveal-words .w { opacity: 1; }
+  .crystal { animation: none; transform: rotateX(-12deg) rotateY(35deg); }
 }

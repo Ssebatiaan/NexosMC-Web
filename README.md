@@ -5,8 +5,8 @@ características, la semana (bases protegidas / raideo, hora de Colombia), notic
 
 - HTML, CSS y JavaScript sin compilar. Animaciones con GSAP 3.15 + ScrollTrigger (licencia estándar gratuita de GSAP)
   y desplazamiento suave con Lenis 1.3.26 (MIT), copiados en `vendor/`.
-- Respeta «reducir movimiento» del sistema (Windows: Configuración → Accesibilidad → Efectos visuales → Efectos de
-  animación): sin animaciones si está apagado.
+- Con «reducir movimiento» del sistema (Windows: Efectos de animación apagados) se anima igual (decisión del dueño:
+  casi siempre se apaga por rendimiento); solo se quitan el desplazamiento con inercia y el giro continuo del cristal.
 - Noticias: `noticias.json` de la rama `pack` del repo del launcher (sale de `client-pack/noticias.json` del proyecto del
   servidor al publicar el modpack).
 - Descarga: la última Release del launcher (`Nexos-Launcher-Setup.exe`, nombre fijo que sube `npm run publicar`).

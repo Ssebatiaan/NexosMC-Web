@@ -4,14 +4,17 @@
   const REPO = "Ssebatiaan/Nexos-Launcher";
   const STABLE_EXE = "Nexos-Launcher-Setup.exe";
   const NEWS_URL = `https://raw.githubusercontent.com/${REPO}/pack/noticias.json`;
-  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  // Con los "efectos de animacion" de Windows apagados (prefers-reduced-motion) solo se quita el desplazamiento con
+  // inercia y el giro continuo del cristal (CSS): el resto se anima igual (decision del usuario: casi siempre se apagan
+  // por rendimiento, no por mareo).
+  const calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   gsap.registerPlugin(ScrollTrigger);
   document.getElementById("year").textContent = new Date().getFullYear();
 
   // ---------------------------------------------------------------- desplazamiento suave
   let lenis = null;
-  if (!reduce) {
+  if (!calm) {
     lenis = new Lenis({ lerp: 0.09, wheelMultiplier: 1 });
     window.__lenis = lenis; // para las capturas de prueba
     lenis.on("scroll", ScrollTrigger.update);
@@ -66,12 +69,12 @@
     if (heroVisible) {
       ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
       for (const s of stars) {
-        const a = reduce ? 0.8 : 0.35 + 0.65 * Math.abs(Math.sin(s.p + (t / 1000) * s.s));
+        const a = 0.35 + 0.65 * Math.abs(Math.sin(s.p + (t / 1000) * s.s));
         ctx.fillStyle = `rgba(${s.c},${a})`;
         ctx.fillRect(s.x, s.y, s.r, s.r); // cuadrados: estrellas "de pixel"
       }
     }
-    if (!reduce) requestAnimationFrame(drawStars);
+    requestAnimationFrame(drawStars);
   }
   resizeStars();
   requestAnimationFrame(drawStars);
@@ -79,43 +82,35 @@
   ScrollTrigger.create({ trigger: ".hero", start: "top top", end: "bottom top", onToggle: (st) => (heroVisible = st.isActive) });
 
   // ---------------------------------------------------------------- portada: entrada y parallax al bajar
-  if (!reduce) {
-    gsap.timeline({ defaults: { ease: "power3.out" } })
-      .from(".crystal-wrap", { opacity: 0, scale: 0.6, duration: 1.6 })
-      .from(".hero-logo", { opacity: 0, y: 40, scale: 0.92, duration: 1.1 }, 0.2)
-      .from(".hero-tagline", { opacity: 0, y: 30, duration: 0.9 }, 0.55)
-      .from(".hero-actions .btn", { opacity: 0, y: 24, stagger: 0.12, duration: 0.8 }, 0.75)
-      .from([".hero-note", ".scroll-hint"], { opacity: 0, duration: 0.8 }, 1.1)
-      .from(".hero-city", { yPercent: 25, opacity: 0, duration: 1.6 }, 0);
+  gsap.timeline({ defaults: { ease: "power3.out" } })
+    .from(".crystal-wrap", { opacity: 0, scale: 0.6, duration: 1.6 })
+    .from(".hero-logo", { opacity: 0, y: 40, scale: 0.92, duration: 1.1 }, 0.2)
+    .from(".hero-tagline", { opacity: 0, y: 30, duration: 0.9 }, 0.55)
+    .from(".hero-actions .btn", { opacity: 0, y: 24, stagger: 0.12, duration: 0.8 }, 0.75)
+    .from([".hero-note", ".scroll-hint"], { opacity: 0, duration: 0.8 }, 1.1)
+    .from(".hero-city", { yPercent: 25, opacity: 0, duration: 1.6 }, 0);
 
-    const hero = { trigger: ".hero", start: "top top", end: "bottom top", scrub: true };
-    gsap.to(".hero-content", { yPercent: -35, opacity: 0, ease: "none", scrollTrigger: hero });
-    gsap.to(".crystal-wrap", { yPercent: 0, y: 180, scale: 1.6, opacity: 0.2, ease: "none", scrollTrigger: hero });
-    gsap.to(".hero-city", { yPercent: -18, ease: "none", scrollTrigger: hero });
-    gsap.to(".hero-glow", { scale: 1.5, opacity: 0.4, ease: "none", scrollTrigger: hero });
-  }
+  const hero = { trigger: ".hero", start: "top top", end: "bottom top", scrub: true };
+  gsap.to(".hero-content", { yPercent: -35, opacity: 0, ease: "none", scrollTrigger: hero });
+  gsap.to(".crystal-wrap", { yPercent: 0, y: 180, scale: 1.6, opacity: 0.2, ease: "none", scrollTrigger: hero });
+  gsap.to(".hero-city", { yPercent: -18, ease: "none", scrollTrigger: hero });
+  gsap.to(".hero-glow", { scale: 1.5, opacity: 0.4, ease: "none", scrollTrigger: hero });
 
   // ---------------------------------------------------------------- "Que es": las palabras se encienden al bajar
   const aboutText = document.getElementById("about-text");
   aboutText.innerHTML = aboutText.textContent.trim().split(/\s+/)
     .map((w) => `<span class="w">${w}</span>`).join(" ");
   const words = aboutText.querySelectorAll(".w");
-  if (!reduce) {
-    gsap.to(words, {
-      opacity: 1,
-      stagger: 0.05,
-      ease: "none",
-      scrollTrigger: { trigger: ".about", start: "top 70%", end: "center 45%", scrub: true },
-    });
-  }
+  gsap.to(words, {
+    opacity: 1,
+    stagger: 0.05,
+    ease: "none",
+    scrollTrigger: { trigger: ".about", start: "top 70%", end: "center 45%", scrub: true },
+  });
   // Numeros que cuentan
   document.querySelectorAll("[data-count]").forEach((el) => {
     const end = Number(el.dataset.count);
     const suffix = el.dataset.suffix || "";
-    if (reduce) {
-      el.textContent = end + suffix;
-      return;
-    }
     const obj = { v: 0 };
     gsap.to(obj, {
       v: end,
@@ -128,7 +123,7 @@
 
   // ---------------------------------------------------------------- caracteristicas: de lado en ordenador
   const mm = gsap.matchMedia();
-  mm.add("(min-width: 901px) and (prefers-reduced-motion: no-preference)", () => {
+  mm.add("(min-width: 901px)", () => {
     const track = document.getElementById("features-track");
     const distance = () => track.scrollWidth - window.innerWidth;
     const scroll = gsap.to(track, {
@@ -153,30 +148,28 @@
       });
     });
   });
-  mm.add("(max-width: 900px) and (prefers-reduced-motion: no-preference)", () => {
+  mm.add("(max-width: 900px)", () => {
     gsap.utils.toArray(".feature").forEach((card) => {
       gsap.from(card, { opacity: 0, y: 60, duration: 0.9, ease: "power3.out", scrollTrigger: { trigger: card, start: "top 85%", once: true } });
     });
   });
 
   // ---------------------------------------------------------------- galeria: aparece y se mueve un poco al bajar
-  if (!reduce) {
-    gsap.utils.toArray(".shot").forEach((shot, i) => {
-      gsap.from(shot, {
-        clipPath: "inset(18% 18% 18% 18% round 18px)",
-        opacity: 0,
-        duration: 1.1,
-        delay: (i % 3) * 0.08,
-        ease: "power3.out",
-        scrollTrigger: { trigger: shot, start: "top 88%", once: true },
-      });
-      gsap.fromTo(shot.querySelector("img"), { yPercent: -8 }, {
-        yPercent: 0,
-        ease: "none",
-        scrollTrigger: { trigger: shot, start: "top bottom", end: "bottom top", scrub: true },
-      });
+  gsap.utils.toArray(".shot").forEach((shot, i) => {
+    gsap.from(shot, {
+      clipPath: "inset(18% 18% 18% 18% round 18px)",
+      opacity: 0,
+      duration: 1.1,
+      delay: (i % 3) * 0.08,
+      ease: "power3.out",
+      scrollTrigger: { trigger: shot, start: "top 88%", once: true },
     });
-  }
+    gsap.fromTo(shot.querySelector("img"), { yPercent: -8 }, {
+      yPercent: 0,
+      ease: "none",
+      scrollTrigger: { trigger: shot, start: "top bottom", end: "bottom top", scrub: true },
+    });
+  });
   // Clic = la captura en grande
   const lightbox = document.getElementById("lightbox");
   const openShot = (shot) => {
@@ -223,19 +216,15 @@
   }
   updateWeek();
   setInterval(updateWeek, 30_000);
-  if (!reduce) {
-    gsap.from(".day", {
-      scaleY: 0,
-      opacity: 0,
-      stagger: 0.08,
-      duration: 0.7,
-      ease: "back.out(1.6)",
-      scrollTrigger: { trigger: ".week-bar", start: "top 80%", once: true },
-    });
-    gsap.to(now, { opacity: 1, duration: 0.6, delay: 0.9, scrollTrigger: { trigger: ".week-bar", start: "top 80%", once: true } });
-  } else {
-    now.style.opacity = 1;
-  }
+  gsap.from(".day", {
+    scaleY: 0,
+    opacity: 0,
+    stagger: 0.08,
+    duration: 0.7,
+    ease: "back.out(1.6)",
+    scrollTrigger: { trigger: ".week-bar", start: "top 80%", once: true },
+  });
+  gsap.to(now, { opacity: 1, duration: 0.6, delay: 0.9, scrollTrigger: { trigger: ".week-bar", start: "top 80%", once: true } });
 
   // ---------------------------------------------------------------- noticias (las mismas del launcher)
   const grid = document.getElementById("news-grid");
@@ -267,9 +256,7 @@
         grid.appendChild(card);
       }
       ScrollTrigger.refresh();
-      if (!reduce) {
-        gsap.from(".news-card", { opacity: 0, y: 40, stagger: 0.1, duration: 0.8, ease: "power3.out", scrollTrigger: { trigger: grid, start: "top 85%", once: true } });
-      }
+      gsap.from(".news-card", { opacity: 0, y: 40, stagger: 0.1, duration: 0.8, ease: "power3.out", scrollTrigger: { trigger: grid, start: "top 85%", once: true } });
     })
     .catch(() => (grid.innerHTML = '<p class="news-empty">No se pudieron cargar las noticias. Míralas en el launcher o en el Discord.</p>'));
 
@@ -290,10 +277,8 @@
     .catch(() => {});
 
   // ---------------------------------------------------------------- apariciones generales al bajar
-  if (!reduce) {
-    gsap.utils.toArray(".eyebrow, section h2:not(.reveal-words), .steps li, .download-box, .week-legend").forEach((el) => {
-      gsap.from(el, { opacity: 0, y: 36, duration: 0.9, ease: "power3.out", scrollTrigger: { trigger: el, start: "top 88%", once: true } });
-    });
-  }
+  gsap.utils.toArray(".eyebrow, section h2:not(.reveal-words), .steps li, .download-box, .week-legend").forEach((el) => {
+    gsap.from(el, { opacity: 0, y: 36, duration: 0.9, ease: "power3.out", scrollTrigger: { trigger: el, start: "top 88%", once: true } });
+  });
   window.addEventListener("load", () => ScrollTrigger.refresh());
 })();

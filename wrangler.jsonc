@@ -1,0 +1,9 @@
+// Publicacion en Cloudflare (Worker con archivos estaticos): todo lo de esta carpeta, salvo lo de .assetsignore.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "nexosmc-web",
+  "compatibility_date": "2026-10-23",
+  "assets": {
+    "directory": "."
+  }
+}

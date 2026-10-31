@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nexos MC · Servidor RPG de Minecraft</title>
+  <meta name="description" content="Clanes, Nexos, raideos cada fin de semana, grietas con jefes, coliseo y casino. Descarga el Nexos Launcher y juega gratis, premium o no premium.">
+  <meta name="theme-color" content="#07040f">
+  <meta property="og:title" content="Nexos MC · Servidor RPG de Minecraft">
+  <meta property="og:description" content="Protege tu Nexo entre semana. El fin de semana, todo se puede perder.">
+  <meta property="og:image" content="https://nexosmc.network/img/og.png">
+  <meta property="og:url" content="https://nexosmc.network/">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" href="img/icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Silkscreen&display=swap">
+  <link rel="stylesheet" href="vendor/lenis.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Barra de arriba: se esconde al bajar y vuelve al subir -->
+  <header class="nav" id="nav">
+    <a class="nav-brand" href="#inicio"><img src="img/icon.png" alt="">NEXOS MC</a>
+    <nav class="nav-links">
+      <a href="#que-es">Qué es</a>
+      <a href="#caracteristicas">Características</a>
+      <a href="#semana">La semana</a>
+      <a href="#noticias">Noticias</a>
+      <a href="#como-jugar">Cómo jugar</a>
+    </nav>
+    <a class="btn btn-small btn-primary download-link" href="#como-jugar">Descargar</a>
+  </header>
+
+  <main>
+    <!-- Portada -->
+    <section class="hero" id="inicio">
+      <div class="hero-sky" aria-hidden="true"><canvas id="stars"></canvas></div>
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="crystal-wrap" aria-hidden="true">
+        <div class="crystal" id="crystal">
+          <div class="pyramid top"><i></i><i></i><i></i><i></i></div>
+          <div class="pyramid bottom"><i></i><i></i><i></i><i></i></div>
+        </div>
+      </div>
+      <div class="hero-city" aria-hidden="true"></div>
+      <div class="hero-content">
+        <img class="hero-logo" src="img/logo.png" alt="Nexos MC">
+        <p class="hero-tagline">Protege tu Nexo entre semana.<br><span>El fin de semana, todo se puede perder.</span></p>
+        <div class="hero-actions">
+          <a class="btn btn-primary btn-big download-link" href="#como-jugar">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 19h16"/></svg>
+            <span>Descargar el launcher<small class="download-meta">Windows 10 / 11 · gratis</small></span>
+          </a>
+          <a class="btn btn-ghost btn-big" href="https://discord.gg/C8N5V8ncRM" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M9 10h.01M15 10h.01"/></svg>
+            <span>Únete al Discord<small>Comunidad y avisos</small></span>
+          </a>
+        </div>
+        <p class="hero-note">Premium y no premium · Minecraft 1.21.1 con mods · Todo se instala solo</p>
+      </div>
+      <a class="scroll-hint" href="#que-es" aria-label="Bajar"><span></span>Desliza</a>
+    </section>
+
+    <!-- Que es -->
+    <section class="about" id="que-es">
+      <div class="about-pin">
+        <p class="eyebrow">Qué es Nexos MC</p>
+        <h2 class="reveal-words" id="about-text">Un servidor de supervivencia RPG para jugar con amigos. Tu clan levanta una base,
+          la protege con su Nexo y la hace crecer. De lunes a viernes nadie puede tocarla. Pero el sábado empiezan los
+          raideos… y si cae tu Nexo, cae todo.</h2>
+        <div class="about-stats">
+          <div><strong data-count="6">0</strong><span>rarezas de grieta</span></div>
+          <div><strong data-count="5">0</strong><span>niveles de Nexo</span></div>
+          <div><strong data-count="48">0</strong><span>horas de raideo cada semana</span></div>
+          <div><strong data-count="70" data-suffix="+">0</strong><span>mods ya instalados</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Caracteristicas: en ordenador se recorren de lado al bajar -->
+    <section class="features" id="caracteristicas">
+      <div class="features-head">
+        <p class="eyebrow">Características</p>
+        <h2>Todo lo que te espera</h2>
+      </div>
+      <div class="features-track" id="features-track">
+        <article class="feature" style="--accent: #a96bff">
+          <div class="feature-text">
+            <span class="feature-num">01</span>
+            <h3>Clanes y Nexo</h3>
+            <p>Crea tu clan con su color y etiqueta. Colocad el Nexo: protege vuestra base, sube de nivel con misiones y
+              agranda la zona protegida.</p>
+          </div>
+          <div class="feature-shot"><img src="img/nexo-texturas.png" alt="El Nexo en sus cinco niveles" loading="lazy"></div>
+        </article>
+        <article class="feature" style="--accent: #ff5d73">
+          <div class="feature-text">
+            <span class="feature-num">02</span>
+            <h3>Raideos de fin de semana</h3>
+            <p>Sábado y domingo se abren las bases: rompe muros, entra y destruye el Nexo enemigo. La pantalla se oscurece,
+              ruge el Warden… y empieza la guerra.</p>
+          </div>
+          <div class="feature-shot"><img src="img/nexo-menu.png" alt="Menú del Nexo" loading="lazy"></div>
+        </article>
+        <article class="feature" style="--accent: #3ee6d8">
+          <div class="feature-text">
+            <span class="feature-num">03</span>
+            <h3>Grietas</h3>
+            <p>Portales que brotan de la tierra. Cuevas con emboscadas, parkour, Simón dice, salas secretas y un jefe al
+              final. Seis rarezas, de común a mítica.</p>
+          </div>
+          <div class="feature-shot"><img src="img/grieta.png" alt="Aviso antes de entrar a una grieta" loading="lazy"></div>
+        </article>
+        <article class="feature" style="--accent: #ffc828">
+          <div class="feature-text">
+            <span class="feature-num">04</span>
+            <h3>Coliseo</h3>
+            <p>Peleas 1 contra 1, 2 contra 2 o clan contra clan. Apuestas, música, fuegos artificiales y modos con kits
+              para medir quién manda.</p>
+          </div>
+          <div class="feature-shot"><img src="img/coliseo.png" alt="Menú del coliseo" loading="lazy"></div>
+        </article>
+        <article class="feature" style="--accent: #e86bff">
+          <div class="feature-text">
+            <span class="feature-num">05</span>
+            <h3>Casino</h3>
+            <p>Ruleta, blackjack, tragaperras y carreras de caballos con fichas. La casa siempre gana… casi siempre.</p>
+          </div>
+          <div class="feature-shot"><img src="img/carrera.png" alt="Carrera de caballos" loading="lazy"></div>
+        </article>
+        <article class="feature" style="--accent: #5be37d">
+          <div class="feature-text">
+            <span class="feature-num">06</span>
+            <h3>Economía</h3>
+            <p>Gana Nex con jefes, oficios y la recompensa diaria. Paga con la app Necu, compra en tiendas o vende en la
+              casa de subastas.</p>
+          </div>
+          <div class="feature-shot"><img src="img/necu-app.png" alt="App Necu" loading="lazy"></div>
+        </article>
+        <article class="feature" style="--accent: #ff9b4a">
+          <div class="feature-text">
+            <span class="feature-num">07</span>
+            <h3>Tu personaje</h3>
+            <p>Sube de nivel, reparte puntos entre siete estadísticas y domina oficios con habilidades propias.</p>
+          </div>
+          <div class="feature-shot"><img src="img/stats.png" alt="Pantalla de personaje" loading="lazy"></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- La semana -->
+    <section class="week" id="semana">
+      <p class="eyebrow">La semana en Nexos MC</p>
+      <h2>Cinco días para construir. <span class="raid-word">Dos para sobrevivir.</span></h2>
+      <div class="week-bar" id="week-bar">
+        <div class="day safe">L</div><div class="day safe">M</div><div class="day safe">M</div><div class="day safe">J</div><div class="day safe">V</div>
+        <div class="day raid">S</div><div class="day raid">D</div>
+        <div class="week-now" id="week-now"><span>Ahora</span></div>
+      </div>
+      <div class="week-legend">
+        <span><i class="safe"></i>Bases protegidas</span>
+        <span><i class="raid"></i>Raideo abierto</span>
+      </div>
+      <p class="week-status" id="week-status">&nbsp;</p>
+    </section>
+
+    <!-- Noticias -->
+    <section class="news" id="noticias">
+      <p class="eyebrow">Noticias</p>
+      <h2>Lo último del servidor</h2>
+      <div class="news-grid" id="news-grid">
+        <p class="news-empty">Cargando noticias…</p>
+      </div>
+    </section>
+
+    <!-- Como jugar -->
+    <section class="howto" id="como-jugar">
+      <p class="eyebrow">Cómo jugar</p>
+      <h2>De cero a jugando en cuatro pasos</h2>
+      <ol class="steps">
+        <li>
+          <span class="step-num">1</span>
+          <h3>Descarga el launcher</h3>
+          <p>Un solo instalador. No necesitas tener Minecraft instalado: el launcher baja Java, Minecraft, NeoForge y
+            todos los mods por ti.</p>
+        </li>
+        <li>
+          <span class="step-num">2</span>
+          <h3>Instálalo</h3>
+          <p>Ábrelo y se instala solo. Si Windows dice <em>«Windows protegió su PC»</em>, pulsa <strong>Más
+            información</strong> y luego <strong>Ejecutar de todas formas</strong>.</p>
+        </li>
+        <li>
+          <span class="step-num">3</span>
+          <h3>Entra con tu cuenta</h3>
+          <p>Con tu cuenta de Microsoft si compraste Minecraft, o solo con tu nombre si no. Elige tu skin y mírala en 3D.</p>
+        </li>
+        <li>
+          <span class="step-num">4</span>
+          <h3>¡A jugar!</h3>
+          <p>Pulsa <strong>JUGAR</strong> y, en el menú del juego, <strong>Jugar en Nexos MC</strong>. Las
+            actualizaciones llegan solas.</p>
+        </li>
+      </ol>
+      <div class="download-box">
+        <img src="img/icon.png" alt="">
+        <div>
+          <h3>Nexos Launcher</h3>
+          <p class="download-version" id="download-version">Para Windows 10 y 11</p>
+        </div>
+        <a class="btn btn-primary btn-big download-link" id="download-main" href="#">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 19h16"/></svg>
+          <span>Descargar gratis</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-brand"><img src="img/icon.png" alt="">NEXOS MC</div>
+    <nav>
+      <a href="https://discord.gg/C8N5V8ncRM" target="_blank" rel="noopener">Discord</a>
+      <a href="#como-jugar">Descargar</a>
+      <a href="#noticias">Noticias</a>
+    </nav>
+    <p class="legal">Nexos MC no es un producto oficial de Minecraft. No está aprobado ni asociado con Mojang ni Microsoft.
+      © <span id="year">2026</span> Nexos MC.</p>
+  </footer>
+
+  <script src="vendor/lenis.min.js"></script>
+  <script src="vendor/gsap.min.js"></script>
+  <script src="vendor/ScrollTrigger.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

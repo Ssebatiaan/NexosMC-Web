@@ -159,6 +159,41 @@
     });
   });
 
+  // ---------------------------------------------------------------- galeria: aparece y se mueve un poco al bajar
+  if (!reduce) {
+    gsap.utils.toArray(".shot").forEach((shot, i) => {
+      gsap.from(shot, {
+        clipPath: "inset(18% 18% 18% 18% round 18px)",
+        opacity: 0,
+        duration: 1.1,
+        delay: (i % 3) * 0.08,
+        ease: "power3.out",
+        scrollTrigger: { trigger: shot, start: "top 88%", once: true },
+      });
+      gsap.fromTo(shot.querySelector("img"), { yPercent: -8 }, {
+        yPercent: 0,
+        ease: "none",
+        scrollTrigger: { trigger: shot, start: "top bottom", end: "bottom top", scrub: true },
+      });
+    });
+  }
+  // Clic = la captura en grande
+  const lightbox = document.getElementById("lightbox");
+  const openShot = (shot) => {
+    lightbox.querySelector("img").src = shot.querySelector("img").src;
+    lightbox.querySelector("img").alt = shot.querySelector("img").alt;
+    lightbox.querySelector("p").textContent = shot.querySelector("figcaption").textContent;
+    lightbox.hidden = false;
+    lenis?.stop();
+  };
+  const closeShot = () => {
+    lightbox.hidden = true;
+    lenis?.start();
+  };
+  document.querySelectorAll(".shot").forEach((shot) => shot.addEventListener("click", () => openShot(shot)));
+  lightbox.addEventListener("click", closeShot);
+  document.addEventListener("keydown", (e) => e.key === "Escape" && !lightbox.hidden && closeShot());
+
   // ---------------------------------------------------------------- la semana (hora de Colombia, UTC-5 sin cambio de hora)
   const DAY_MS = 24 * 3600 * 1000;
   function weekInfo() {

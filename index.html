@@ -25,6 +25,7 @@
     <nav class="nav-links">
       <a href="#que-es">Qué es</a>
       <a href="#caracteristicas">Características</a>
+      <a href="#galeria">Galería</a>
       <a href="#semana">La semana</a>
       <a href="#noticias">Noticias</a>
       <a href="#como-jugar">Cómo jugar</a>
@@ -92,7 +93,7 @@
             <p>Crea tu clan con su color y etiqueta. Colocad el Nexo: protege vuestra base, sube de nivel con misiones y
               agranda la zona protegida.</p>
           </div>
-          <div class="feature-shot"><img src="img/nexo-texturas.png" alt="El Nexo en sus cinco niveles" loading="lazy"></div>
+          <div class="feature-shot"><img src="img/capturas/clan.webp" alt="Menú del clan"></div>
         </article>
         <article class="feature" style="--accent: #ff5d73">
           <div class="feature-text">
@@ -101,7 +102,7 @@
             <p>Sábado y domingo se abren las bases: rompe muros, entra y destruye el Nexo enemigo. La pantalla se oscurece,
               ruge el Warden… y empieza la guerra.</p>
           </div>
-          <div class="feature-shot"><img src="img/nexo-menu.png" alt="Menú del Nexo" loading="lazy"></div>
+          <div class="feature-shot pixel"><img src="img/nexo-texturas.png" alt="El Nexo en sus cinco niveles, sano, agrietado y roto"></div>
         </article>
         <article class="feature" style="--accent: #3ee6d8">
           <div class="feature-text">
@@ -110,7 +111,7 @@
             <p>Portales que brotan de la tierra. Cuevas con emboscadas, parkour, Simón dice, salas secretas y un jefe al
               final. Seis rarezas, de común a mítica.</p>
           </div>
-          <div class="feature-shot"><img src="img/grieta.png" alt="Aviso antes de entrar a una grieta" loading="lazy"></div>
+          <div class="feature-shot"><img src="img/capturas/grieta-portal.webp" alt="Portal de una grieta épica"></div>
         </article>
         <article class="feature" style="--accent: #ffc828">
           <div class="feature-text">
@@ -119,7 +120,7 @@
             <p>Peleas 1 contra 1, 2 contra 2 o clan contra clan. Apuestas, música, fuegos artificiales y modos con kits
               para medir quién manda.</p>
           </div>
-          <div class="feature-shot"><img src="img/coliseo.png" alt="Menú del coliseo" loading="lazy"></div>
+          <div class="feature-shot"><img src="img/capturas/coliseo.webp" alt="La arena del coliseo"></div>
         </article>
         <article class="feature" style="--accent: #e86bff">
           <div class="feature-text">
@@ -127,7 +128,7 @@
             <h3>Casino</h3>
             <p>Ruleta, blackjack, tragaperras y carreras de caballos con fichas. La casa siempre gana… casi siempre.</p>
           </div>
-          <div class="feature-shot"><img src="img/carrera.png" alt="Carrera de caballos" loading="lazy"></div>
+          <div class="feature-shot pixel"><img src="img/carrera.png" alt="Carrera de caballos"></div>
         </article>
         <article class="feature" style="--accent: #5be37d">
           <div class="feature-text">
@@ -136,7 +137,7 @@
             <p>Gana Nex con jefes, oficios y la recompensa diaria. Paga con la app Necu, compra en tiendas o vende en la
               casa de subastas.</p>
           </div>
-          <div class="feature-shot"><img src="img/necu-app.png" alt="App Necu" loading="lazy"></div>
+          <div class="feature-shot"><img src="img/capturas/necu.webp" alt="App Necu"></div>
         </article>
         <article class="feature" style="--accent: #ff9b4a">
           <div class="feature-text">
@@ -144,8 +145,22 @@
             <h3>Tu personaje</h3>
             <p>Sube de nivel, reparte puntos entre siete estadísticas y domina oficios con habilidades propias.</p>
           </div>
-          <div class="feature-shot"><img src="img/stats.png" alt="Pantalla de personaje" loading="lazy"></div>
+          <div class="feature-shot"><img src="img/capturas/personaje.webp" alt="Pantalla de personaje"></div>
         </article>
+      </div>
+    </section>
+
+    <!-- Galeria -->
+    <section class="gallery" id="galeria">
+      <p class="eyebrow">Galería</p>
+      <h2>Así se ve Nexos MC</h2>
+      <div class="gallery-grid">
+        <figure class="shot big"><img src="img/capturas/g-ciudad.webp" alt="La ciudad del spawn con el coliseo" loading="lazy"><figcaption>La ciudad del spawn</figcaption></figure>
+        <figure class="shot"><img src="img/capturas/g-portal.webp" alt="Portal de una grieta" loading="lazy"><figcaption>Portal de una grieta</figcaption></figure>
+        <figure class="shot"><img src="img/capturas/g-parkour.webp" alt="Parkour sobre lava dentro de una grieta" loading="lazy"><figcaption>Parkour sobre lava</figcaption></figure>
+        <figure class="shot"><img src="img/capturas/g-simon.webp" alt="Sala de Simón dice" loading="lazy"><figcaption>Simón dice</figcaption></figure>
+        <figure class="shot"><img src="img/capturas/g-caverna.webp" alt="Caverna de combate" loading="lazy"><figcaption>Caverna de combate</figcaption></figure>
+        <figure class="shot"><img src="img/capturas/g-coliseo-arriba.webp" alt="El coliseo visto desde arriba" loading="lazy"><figcaption>El coliseo desde arriba</figcaption></figure>
       </div>
     </section>
 
@@ -227,6 +242,13 @@
     <p class="legal">Nexos MC no es un producto oficial de Minecraft. No está aprobado ni asociado con Mojang ni Microsoft.
       © <span id="year">2026</span> Nexos MC.</p>
   </footer>
+
+  <!-- Visor de la galeria -->
+  <div class="lightbox" id="lightbox" hidden>
+    <button class="lightbox-close" aria-label="Cerrar">✕</button>
+    <img alt="">
+    <p></p>
+  </div>
 
   <script src="vendor/lenis.min.js"></script>
   <script src="vendor/gsap.min.js"></script>
